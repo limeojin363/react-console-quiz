@@ -50,7 +50,10 @@ const LinksGeneratedFromRoute = () => (
 );
 
 const GitHubLink = () => (
-  <a href="https://github.com/" target="_blank" rel="noreferrer">
+  <a
+    href="https://react-effect-state-quizzes.vercel.app"
+    target="_blank"
+    rel="noreferrer">
     <img src={GitHubIcon} alt="" width={40} />
   </a>
 );
