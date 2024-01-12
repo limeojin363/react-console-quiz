@@ -1,4 +1,4 @@
-const ResultView = ({ result }: { result: number[] }) => {
+const ResultView = <T extends string | number>({ result }: { result: T[] }) => {
   if (result.length === 0) return "정답을 확인합니다";
 
   return (

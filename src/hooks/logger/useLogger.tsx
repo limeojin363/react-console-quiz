@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 
-const useLogger = <TItem,>() => {
-  const [queue, setQueue] = useState<TItem[]>([]);
-  const [result, setResult] = useState<TItem[]>([]);
+const useLogger = <T extends number | string>() => {
+  const [queue, setQueue] = useState<T[]>([]);
+  const [result, setResult] = useState<T[]>([]);
   const [isShow, setIsFired] = useState(false);
 
   const show = () => setIsFired(true);
 
   const pushToQueue = useCallback(
-    (item: TItem) => {
+    (item: T) => {
       setQueue((prev) => [...prev, item]);
     },
     [setQueue]
