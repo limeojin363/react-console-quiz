@@ -7,6 +7,8 @@ const Quiz1 = lazy(() => import("./components/quizzes/Quiz1"));
 const Quiz2 = lazy(() => import("./components/quizzes/Quiz2"));
 const Quiz3 = lazy(() => import("./components/quizzes/Quiz3"));
 const Quiz4 = lazy(() => import("./components/quizzes/Quiz4"));
+const Quiz5 = lazy(() => import("./components/quizzes/Quiz5"));
+const Quiz6 = lazy(() => import("./components/quizzes/Quiz6"));
 
 const routes = [
   {
@@ -33,6 +35,16 @@ const routes = [
     path: "/4",
     element: <Quiz4 />,
     view: "4",
+  },
+  {
+    path: "/5",
+    element: <Quiz5 />,
+    view: "5",
+  },
+  {
+    path: "/6",
+    element: <Quiz6 />,
+    view: "6",
   },
 ];
 
@@ -65,7 +77,9 @@ const App = () => {
         <LinksGeneratedFromRoute />
         <GitHubLink />
       </header>
-      <RouterProvider router={createBrowserRouter(routes)} />
+      <main>
+        <RouterProvider router={createBrowserRouter(routes)} />
+      </main>
     </div>
   );
 };
