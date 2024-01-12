@@ -5,7 +5,7 @@ import QuizTemplate from "../template/QuizTemplate";
 const code = `const [num, setNum] = useState(1);
 
 useEffect(() => {
-  if (num < 10) {
+  if (num < 30) {
     setNum((prev) => prev * 2);
     log(num);
   }
