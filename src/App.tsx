@@ -48,18 +48,26 @@ const routes = [
   },
 ];
 
-const LinksGeneratedFromRoute = () => (
-  <div className="flex gap-2">
-    {routes.map((route) => (
-      <a
-        key={route.path}
-        className="font-bold text-lg text-gray-800"
-        href={route.path}>
-        {route.view}
-      </a>
-    ))}
-  </div>
-);
+const LinksGeneratedFromRoute = () => {
+  console.log(window.location.pathname);
+  return (
+    <div className="flex gap-2">
+      {routes.map((route) => (
+        <a
+          key={route.path}
+          href={route.path}
+          className={
+            "text-lg font-bold " +
+            (window.location.pathname === route.path
+              ? "text-gray-900"
+              : "text-gray-500")
+          }>
+          {route.view}
+        </a>
+      ))}
+    </div>
+  );
+};
 
 const GitHubLink = () => (
   <a
@@ -71,6 +79,8 @@ const GitHubLink = () => (
 );
 
 const App = () => {
+  console.log(window.location.pathname);
+
   return (
     <div className="bg-gray-100 min-h-dvh relative">
       <header className="flex justify-between p-4 items-center bg-gray-200 gap-2">
