@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 const useLogger = <T extends number | string>() => {
   const [queue, setQueue] = useState<T[]>([]);
   const [result, setResult] = useState<T[]>([]);
-  const [isShow, setIsFired] = useState(false);
+  const [isLogShow, setIsFired] = useState(false);
 
   const show = () => setIsFired(true);
 
@@ -22,13 +22,13 @@ const useLogger = <T extends number | string>() => {
   }, [queue]);
 
   useEffect(() => {
-    if (isShow) {
+    if (isLogShow) {
       const moveTimer = setInterval(move, 1000);
       return () => clearTimeout(moveTimer);
     }
-  }, [move, isShow]);
+  }, [move, isLogShow]);
 
-  return { log: pushToQueue, isShow, show, result };
+  return { log: pushToQueue, isLogShow, show, result };
 };
 
 export default useLogger;

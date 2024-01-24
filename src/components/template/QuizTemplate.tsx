@@ -18,8 +18,8 @@ type QuizTemplateProps = ComponentProps<typeof CodeViewer> &
   Omit<ReturnType<typeof useLogger>, "log"> &
   ComponentProps<typeof ResultView>;
 
-const QuizTemplate = ({ code, result, isShow, show }: QuizTemplateProps) => {
-  if (!isShow)
+const QuizTemplate = ({ code, result, isLogShow, show }: QuizTemplateProps) => {
+  if (!isLogShow)
     return (
       <TemplateMain code={code}>
         <button onClick={show} className="bg-gray-200 w-full p-4 text-gray-800">

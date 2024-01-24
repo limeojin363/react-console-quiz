@@ -15,7 +15,7 @@ useEffect(() => {
 `;
 
 const Quiz5 = () => {
-  const { log, show, result, isShow } = useLogger();
+  const { log, show, result, isLogShow } = useLogger();
   const [a, setA] = useState(1);
 
   // clean-up은 실행이 될까?
@@ -33,7 +33,7 @@ const Quiz5 = () => {
     <QuizTemplate
       {...{
         code,
-        isShow,
+        isLogShow,
         result,
         show,
       }}

@@ -16,7 +16,7 @@ useEffect(() => {
 `;
 
 const Quiz6 = () => {
-  const { log, show, result, isShow } = useLogger();
+  const { log, show, result, isLogShow } = useLogger();
   const [a, setA] = useState(1);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Quiz6 = () => {
     <QuizTemplate
       {...{
         code,
-        isShow,
+        isLogShow,
         result,
         show,
       }}
