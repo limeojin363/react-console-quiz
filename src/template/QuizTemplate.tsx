@@ -1,5 +1,5 @@
 import { type ComponentProps } from "react";
-import useLogger from "../quizzes/useLog";
+import useLog from "../quizzes/useLog";
 import CodeViewer from "../view/CodeView";
 import ResultView from "../view/ResultView";
 
@@ -15,7 +15,7 @@ const TemplateMain = ({ children, code }: TemplateMainProps) => (
 );
 
 type QuizTemplateProps = ComponentProps<typeof CodeViewer> &
-  Omit<ReturnType<typeof useLogger>, "log"> &
+  Omit<ReturnType<typeof useLog>, "log"> &
   ComponentProps<typeof ResultView>;
 
 const QuizTemplate = ({ code, result, isLogShow, show }: QuizTemplateProps) => {

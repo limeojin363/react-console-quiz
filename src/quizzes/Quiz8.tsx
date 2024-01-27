@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLogger from "./useLog";
+import useLog from "./useLog";
 import QuizTemplate from "../template/QuizTemplate";
 
 const code = `const [count, setCount] = useState(0);
@@ -14,7 +14,7 @@ useEffect(() => {
 }, [count]);`;
 
 const Quiz8 = () => {
-  const { show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLog();
   const [count, setCount] = useState(0);
 
   useEffect(() => {

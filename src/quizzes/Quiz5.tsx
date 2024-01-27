@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLogger from "./useLog";
+import useLog from "./useLog";
 import QuizTemplate from "../template/QuizTemplate";
 
 const code = `// clean-up은 실행이 될까?
@@ -14,7 +14,7 @@ useEffect(() => {
 }, [a, setA]);`;
 
 const Quiz5 = () => {
-  const { show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLog();
   const [a, setA] = useState(1);
 
   // clean-up은 실행이 될까?
