@@ -13,7 +13,7 @@ useEffect(() => {
 }, [setNum, num]);`;
 
 const Quiz3 = () => {
-  const { show, result, isLogShow } = useLogger<number>();
+  const { show, result, isLogShow } = useLogger();
   const [num, setNum] = useState(1);
 
   useEffect(() => {

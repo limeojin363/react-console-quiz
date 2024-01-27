@@ -14,7 +14,7 @@ useEffect(() => {
 }, [setNum, num]);`;
 
 const Quiz1 = () => {
-  const { show, result, isLogShow } = useLogger<number>();
+  const { show, result, isLogShow } = useLogger();
   const [num, setNum] = useState(0);
 
   useEffect(() => {
