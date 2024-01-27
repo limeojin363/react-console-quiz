@@ -7,21 +7,20 @@ const code = `const [num, setNum] = useState(1);
 useEffect(() => {
   if (num < 30) {
     setNum((prev) => prev * 2);
-    log(num);
+    console.log(num);
   }
-}, [setNum, log, num]);
-`;
+}, [setNum, num]);`;
 
 const Quiz2 = () => {
-  const { log, show, result, isLogShow } = useLogger<number>();
+  const { show, result, isLogShow } = useLogger<number>();
   const [num, setNum] = useState(1);
 
   useEffect(() => {
     if (num < 30) {
       setNum((prev) => prev * 2);
-      log(num);
+      console.log(num);
     }
-  }, [setNum, log, num]);
+  }, [setNum, num]);
 
   return (
     <QuizTemplate

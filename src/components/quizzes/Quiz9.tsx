@@ -7,18 +7,18 @@ const code = `const [count, setCount] = useState(0);
 useEffect(() => {
   if (count < 3) {
     setCount((prev) => prev + 1);
-    log("hello");
+    console.log("hello");
 
-    return () => log("bye");
+    return () => console.log("bye");
   }
 
-  return () => log("ㅋㅋ");
-}, [log, count]);
+  return () => console.log("ㅋㅋ");
+}, [count]);
 
 useEffect(() => {
   const timer = setTimeout(() => {
     setCount(100);
-  });
+  }, 1000);
 
   return () => {
     clearTimeout(timer);
@@ -26,19 +26,19 @@ useEffect(() => {
 }, []);`;
 
 const Quiz9 = () => {
-  const { log, show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLogger();
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (count < 3) {
       setCount((prev) => prev + 1);
-      log("hello");
+      console.log("hello");
 
-      return () => log("bye");
+      return () => console.log("bye");
     }
 
-    return () => log("ㅋㅋ");
-  }, [log, count]);
+    return () => console.log("ㅋㅋ");
+  }, [count]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

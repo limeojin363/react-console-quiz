@@ -6,27 +6,27 @@ const code = `const [a, setA] = useState(1);
 
 useEffect(() => {
   setA(2);
-  log(a);
-}, [log, a]);
+  console.log(a);
+}, [a]);
 
 useEffect(() => {
   setA(3);
-  log(a);
-}, [log, a]);`;
+  console.log(a);
+}, [a]);`;
 
 const Quiz7 = () => {
-  const { log, show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLogger();
   const [a, setA] = useState(1);
 
   useEffect(() => {
     setA(2);
-    log(a);
-  }, [log, a]);
+    console.log(a);
+  }, [a]);
 
   useEffect(() => {
     setA(3);
-    log(a);
-  }, [log, a]);
+    console.log(a);
+  }, [a]);
 
   return (
     <QuizTemplate

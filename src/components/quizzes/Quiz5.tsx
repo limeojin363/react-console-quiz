@@ -2,32 +2,31 @@ import { useEffect, useState } from "react";
 import useLogger from "../../hooks/logger/useLogger";
 import QuizTemplate from "../template/QuizTemplate";
 
-const code = `// clean-up function은 실행이 될까?
+const code = `// clean-up은 실행이 될까?
 useEffect(() => {
   if (a > 20)
     return () => {
-      log(a);
+      console.log(a);
     };
 
-  log(a);
+  console.log(a);
   setA((prev) => prev * 2);
-}, [a, setA, log]);
-`;
+}, [a, setA]);`;
 
 const Quiz5 = () => {
-  const { log, show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLogger();
   const [a, setA] = useState(1);
 
   // clean-up은 실행이 될까?
   useEffect(() => {
     if (a > 20)
       return () => {
-        log(a);
+        console.log(a);
       };
 
-    log(a);
+    console.log(a);
     setA((prev) => prev * 2);
-  }, [a, setA, log]);
+  }, [a, setA]);
 
   return (
     <QuizTemplate

@@ -7,24 +7,24 @@ const code = `const [count, setCount] = useState(0);
 useEffect(() => {
   if (count < 3) {
     setCount((prev) => prev + 1);
-    log("hello");
+    console.log("hello");
   }
 
-  return () => log("bye");
-}, [log, count]);`;
+  return () => console.log("bye");
+}, [count]);`;
 
 const Quiz8 = () => {
-  const { log, show, result, isLogShow } = useLogger();
+  const { show, result, isLogShow } = useLogger();
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (count < 3) {
       setCount((prev) => prev + 1);
-      log("hello");
+      console.log("hello");
     }
 
-    return () => log("bye");
-  }, [log, count]);
+    return () => console.log("bye");
+  }, [count]);
 
   return (
     <QuizTemplate

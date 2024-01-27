@@ -5,27 +5,26 @@ import QuizTemplate from "../template/QuizTemplate";
 const code = `const [num, setNum] = useState(0);
 
 useEffect(() => {
-  log(num);
+  console.log(num);
   setNum(1);
 
   return () => {
-    log(-1);
+    console.log(-1);
   };
-}, [setNum, log, num]);
-`;
+}, [setNum, num]);`;
 
 const Quiz1 = () => {
-  const { log, show, result, isLogShow } = useLogger<number>();
+  const { show, result, isLogShow } = useLogger<number>();
   const [num, setNum] = useState(0);
 
   useEffect(() => {
-    log(num);
+    console.log(num);
     setNum(1);
 
     return () => {
-      log(-1);
+      console.log(-1);
     };
-  }, [setNum, log, num]);
+  }, [setNum, num]);
 
   return (
     <QuizTemplate
