@@ -19,7 +19,7 @@ yarn start
 
 ## Others
 
-- 이슈 만들고 생각해 봅시다
+- 이슈 만들고 생각해 봅시다.
 
 # Commit Convention
 

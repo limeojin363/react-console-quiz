@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLogger from "../../hooks/logger/useLogger";
+import useLogger from "./useLog";
 import QuizTemplate from "../template/QuizTemplate";
 
 const code = `const [a, setA] = useState(1);

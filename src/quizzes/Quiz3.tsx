@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-import useLogger from "../../hooks/logger/useLogger";
+import useLogger from "./useLog";
 import QuizTemplate from "../template/QuizTemplate";
 
 const code = `const [num, setNum] = useState(1);
 
 useEffect(() => {
   if (num < 30) {
-    setNum((prev) => prev * 2);
-    setNum((prev) => prev * 2);
+    setNum(num * 2);
+    setNum(num * 2);
     console.log(num);
   }
 }, [setNum, num]);`;
 
-const Quiz4 = () => {
+const Quiz3 = () => {
   const { show, result, isLogShow } = useLogger();
   const [num, setNum] = useState(1);
 
   useEffect(() => {
     if (num < 30) {
-      setNum((prev) => prev * 2);
-      setNum((prev) => prev * 2);
+      setNum(num * 2);
+      setNum(num * 2);
       console.log(num);
     }
   }, [setNum, num]);
@@ -36,4 +36,4 @@ const Quiz4 = () => {
   );
 };
 
-export default Quiz4;
+export default Quiz3;

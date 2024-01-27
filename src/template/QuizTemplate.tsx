@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react";
-import ResultView from "../view/ResultView";
-import useLogger from "../../hooks/logger/useLogger";
+import useLogger from "../quizzes/useLog";
 import CodeViewer from "../view/CodeView";
+import ResultView from "../view/ResultView";
 
 type TemplateMainProps = { children: React.ReactNode } & ComponentProps<
   typeof CodeViewer

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from "react";
  * isLogShow: 정답을 보여 주나?
  * result: view에 나타날 실행 결과
  */
-const useLogger = <T extends number | string>() => {
+const useLog = <T extends number | string>() => {
   const [queue, setQueue] = useState<T[]>([]);
   const [result, setResult] = useState<T[]>([]);
   const [isLogShow, setIsFired] = useState(false);
@@ -43,4 +43,4 @@ const useLogger = <T extends number | string>() => {
   };
 };
 
-export default useLogger;
+export default useLog;
