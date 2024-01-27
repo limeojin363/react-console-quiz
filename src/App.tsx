@@ -2,6 +2,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import Description from "./components/description/Description";
 import GitHubIcon from "./assets/images/github.svg";
+import Quiz7 from "./components/quizzes/Quiz7";
+import Quiz8 from "./components/quizzes/Quiz8";
+import Quiz9 from "./components/quizzes/Quiz9";
 
 const Quiz1 = lazy(() => import("./components/quizzes/Quiz1"));
 const Quiz2 = lazy(() => import("./components/quizzes/Quiz2"));
@@ -45,6 +48,21 @@ const routes = [
     path: "/6",
     element: <Quiz6 />,
     view: "6",
+  },
+  {
+    path: "/7",
+    element: <Quiz7 />,
+    view: "7",
+  },
+  {
+    path: "/8",
+    element: <Quiz8 />,
+    view: "8",
+  },
+  {
+    path: "/9",
+    element: <Quiz9 />,
+    view: "9",
   },
 ];
 
