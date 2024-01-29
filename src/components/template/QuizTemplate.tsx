@@ -1,17 +1,20 @@
 import { type ComponentProps } from "react";
-import useLog from "../quizzes/useLog";
+import useLog from "../../hooks/useLog";
 import CodeViewer from "../view/CodeView";
 import ResultView from "../view/ResultView";
+import { Button } from "../ui/button";
+import Answer from "../answer/Answer";
+import styled from "styled-components";
 
 type TemplateMainProps = { children: React.ReactNode } & ComponentProps<
   typeof CodeViewer
 >;
 
 const TemplateMain = ({ children, code }: TemplateMainProps) => (
-  <div className="flex flex-col gap-8 p-4">
+  <S.TemplateMainRoot>
     <CodeViewer code={code} />
     {children}
-  </div>
+  </S.TemplateMainRoot>
 );
 
 type QuizTemplateProps = ComponentProps<typeof CodeViewer> &
@@ -22,9 +25,8 @@ const QuizTemplate = ({ code, result, isLogShow, show }: QuizTemplateProps) => {
   if (!isLogShow)
     return (
       <TemplateMain code={code}>
-        <button onClick={show} className="bg-gray-200 w-full p-4 text-gray-800">
-          정답 확인
-        </button>
+        <Button onClick={show}>정답 확인</Button>
+        <Answer a={"afsd"} />
       </TemplateMain>
     );
 
@@ -36,3 +38,12 @@ const QuizTemplate = ({ code, result, isLogShow, show }: QuizTemplateProps) => {
 };
 
 export default QuizTemplate;
+
+const S = {
+  TemplateMainRoot: styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px;
+  `,
+};

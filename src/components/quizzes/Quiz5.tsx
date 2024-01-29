@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLog from "./useLog";
+import useLog from "../../hooks/useLog";
 import QuizTemplate from "../template/QuizTemplate";
 
 const code = `// clean-up은 실행이 될까?

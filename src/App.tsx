@@ -1,17 +1,17 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import GitHubIcon from "./assets/images/github.svg";
-import Quiz7 from "./quizzes/Quiz7";
-import Quiz8 from "./quizzes/Quiz8";
-import Quiz9 from "./quizzes/Quiz9";
-import Description from "./description/Description";
+import Quiz7 from "./components/quizzes/Quiz7";
+import Quiz8 from "./components/quizzes/Quiz8";
+import Quiz9 from "./components/quizzes/Quiz9";
+import Description from "./components/description/Description";
 
-const Quiz1 = lazy(() => import("./quizzes/Quiz1"));
-const Quiz2 = lazy(() => import("./quizzes/Quiz2"));
-const Quiz3 = lazy(() => import("./quizzes/Quiz3"));
-const Quiz4 = lazy(() => import("./quizzes/Quiz4"));
-const Quiz5 = lazy(() => import("./quizzes/Quiz5"));
-const Quiz6 = lazy(() => import("./quizzes/Quiz6"));
+const Quiz1 = lazy(() => import("./components/quizzes/Quiz1"));
+const Quiz2 = lazy(() => import("./components/quizzes/Quiz2"));
+const Quiz3 = lazy(() => import("./components/quizzes/Quiz3"));
+const Quiz4 = lazy(() => import("./components/quizzes/Quiz4"));
+const Quiz5 = lazy(() => import("./components/quizzes/Quiz5"));
+const Quiz6 = lazy(() => import("./components/quizzes/Quiz6"));
 
 const routes = [
   {
