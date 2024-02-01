@@ -1,49 +1,82 @@
-// import { type ComponentProps } from "react";
-// import useLog from "../../hooks/useLog";
-// import CodeViewer from "../view/CodeView";
-// import ResultView from "../view/ResultView";
-// import { Button } from "../ui/button";
-// import Answer from "../answer/UserAnswer";
-// import styled from "styled-components";
+import S from "./QuizTemplate.style";
+import CodeView from "../view/CodeView";
+import AnswerInput from "../answer/AnswerInput";
+import CodeExecutionResult from "../view/QuizExecutionResult";
+import useQuizState from "../../hooks/quiz/useQuizState";
+import { Button } from "../ui/button";
+import AnswerCheck from "../answer/AnswerCheck";
 
-// type TemplateMainProps = { children: React.ReactNode } & ComponentProps<
-//   typeof CodeViewer
-// >;
+export type QuizComponentObject = {
+  (): null;
+  code: string;
+};
 
-// const TemplateMain = ({ children, code }: TemplateMainProps) => (
-//   <S.TemplateMainRoot>
-//     <CodeViewer code={code} />
-//     {children}
-//   </S.TemplateMainRoot>
-// );
+const BottomLeft = ({
+  quizStatus,
+  answerInputObject,
+  checkedAnswerItems,
+  isOverallTrue,
+}: Pick<
+  ReturnType<typeof useQuizState>,
+  "quizStatus" | "answerInputObject" | "isOverallTrue" | "checkedAnswerItems"
+>) =>
+  quizStatus === "INPUTTING" ? (
+    <AnswerInput {...answerInputObject} />
+  ) : (
+    <AnswerCheck
+      checkedAnswerItems={checkedAnswerItems}
+      isOverallTrue={isOverallTrue}
+    />
+  );
 
-// type QuizTemplateProps = ComponentProps<typeof CodeViewer> &
-//   Omit<ReturnType<typeof useLog>, "log"> &
-//   ComponentProps<typeof ResultView>;
+const BottomRight = ({
+  quizStatus,
+  executionResult,
+  executeCode,
+}: Pick<
+  ReturnType<typeof useQuizState>,
+  "quizStatus" | "executionResult" | "executeCode"
+>) =>
+  quizStatus === "INPUTTING" ? (
+    <Button onClick={executeCode}>123123</Button>
+  ) : (
+    <CodeExecutionResult result={executionResult} />
+  );
 
-// const QuizTemplate = ({ code, result, isLogShow, show }: QuizTemplateProps) => {
-//   if (!isLogShow)
-//     return (
-//       <TemplateMain code={code}>
-//         <Button onClick={show}>정답 확인</Button>
-//         <Answer a={"afsd"} />
-//       </TemplateMain>
-//     );
+type QuizTemplateProps = { quizComponentObject: QuizComponentObject };
 
-//   return (
-//     <TemplateMain code={code}>
-//       <ResultView result={result} />
-//     </TemplateMain>
-//   );
-// };
+const QuizTemplate = ({ quizComponentObject }: QuizTemplateProps) => {
+  const {
+    quizStatus,
+    executionResult,
+    answerInputObject,
+    executeCode,
+    checkedAnswerItems,
+    isOverallTrue,
+  } = useQuizState();
 
-// export default QuizTemplate;
+  return (
+    <>
+      <S.Root>
+        <S.Top>
+          <CodeView code={quizComponentObject.code} />
+        </S.Top>
+        <S.Bottom>
+          <BottomLeft
+            {...{
+              answerInputObject,
+              quizStatus,
+              checkedAnswerItems,
+              isOverallTrue,
+            }}
+          />
+          <BottomRight {...{ executeCode, executionResult, quizStatus }} />
+        </S.Bottom>
+      </S.Root>
+      {/* Quiz component mount */}
+      {quizComponentObject()}
+    </>
+  );
+};
 
-// const S = {
-//   TemplateMainRoot: styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 16px;
-//     padding: 8px;
-//   `,
-// };
+export default QuizTemplate;

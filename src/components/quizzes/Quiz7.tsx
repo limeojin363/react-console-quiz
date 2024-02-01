@@ -1,43 +1,34 @@
-// import { useEffect, useState } from "react";
-// import useLog from "../../hooks/useLog";
-// import QuizTemplate from "../template/QuizTemplate";
+import { useEffect, useState } from "react";
+import { QuizComponentObject } from "../template/QuizTemplate";
 
-// const code = `const [a, setA] = useState(1);
+const code = `const [a, setA] = useState(1);
 
-// useEffect(() => {
-//   setA(2);
-//   console.log(a);
-// }, [a]);
+useEffect(() => {
+  setA(2);
+  console.log(a);
+}, [a]);
 
-// useEffect(() => {
-//   setA(3);
-//   console.log(a);
-// }, [a]);`;
+useEffect(() => {
+  setA(3);
+  console.log(a);
+}, [a]);`;
 
-// const Quiz7 = () => {
-//   const { show, result, isLogShow } = useLog();
-//   const [a, setA] = useState(1);
+const Quiz7: QuizComponentObject = () => {
+  const [a, setA] = useState(1);
 
-//   useEffect(() => {
-//     setA(2);
-//     console.log(a);
-//   }, [a]);
+  useEffect(() => {
+    setA(2);
+    console.log(a);
+  }, [a]);
 
-//   useEffect(() => {
-//     setA(3);
-//     console.log(a);
-//   }, [a]);
+  useEffect(() => {
+    setA(3);
+    console.log(a);
+  }, [a]);
 
-//   return (
-//     <QuizTemplate
-//       {...{
-//         code,
-//         isLogShow,
-//         result,
-//         show,
-//       }}
-//     />
-//   );
-// };
+  return null;
+};
 
-// export default Quiz7;
+Quiz7.code = code;
+
+export default Quiz7;

@@ -1,65 +1,56 @@
-// import { useEffect, useState } from "react";
-// import useLog from "../../hooks/useLog";
-// import QuizTemplate from "../template/QuizTemplate";
+import { useEffect, useState } from "react";
+import { QuizComponentObject } from "../template/QuizTemplate";
 
-// const code = `const [count, setCount] = useState(0);
+const code = `const [count, setCount] = useState(0);
 
-// useEffect(() => {
-//   if (count < 3) {
-//     setCount((prev) => prev + 1);
-//     console.log("hello");
+useEffect(() => {
+  if (count < 3) {
+    setCount((prev) => prev + 1);
+    console.log("hello");
 
-//     return () => console.log("bye");
-//   }
+    return () => console.log("bye");
+  }
 
-//   return () => console.log("ㅋㅋ");
-// }, [count]);
+  return () => console.log("ㅋㅋ");
+}, [count]);
 
-// useEffect(() => {
-//   const timer = setTimeout(() => {
-//     setCount(100);
-//   }, 1000);
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setCount(100);
+  }, 1000);
 
-//   return () => {
-//     clearTimeout(timer);
-//   };
-// }, []);`;
+  return () => {
+    clearTimeout(timer);
+  };
+}, []);`;
 
-// const Quiz9 = () => {
-//   const { show, result, isLogShow } = useLog();
-//   const [count, setCount] = useState(0);
+const Quiz9: QuizComponentObject = () => {
+  const [count, setCount] = useState(0);
 
-//   useEffect(() => {
-//     if (count < 3) {
-//       setCount((prev) => prev + 1);
-//       console.log("hello");
+  useEffect(() => {
+    if (count < 3) {
+      setCount((prev) => prev + 1);
+      console.log("hello");
 
-//       return () => console.log("bye");
-//     }
+      return () => console.log("bye");
+    }
 
-//     return () => console.log("ㅋㅋ");
-//   }, [count]);
+    return () => console.log("ㅋㅋ");
+  }, [count]);
 
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setCount(100);
-//     }, 1000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCount(100);
+    }, 1000);
 
-//     return () => {
-//       clearTimeout(timer);
-//     };
-//   }, []);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
-//   return (
-//     <QuizTemplate
-//       {...{
-//         code,
-//         isLogShow,
-//         result,
-//         show,
-//       }}
-//     />
-//   );
-// };
+  return null;
+};
 
-// export default Quiz9;
+Quiz9.code = code;
+
+export default Quiz9;

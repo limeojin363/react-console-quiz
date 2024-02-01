@@ -1,41 +1,32 @@
-// import { useEffect, useState } from "react";
-// import useLog from "../../hooks/useLog";
-// import QuizTemplate from "../template/QuizTemplate";
+import { useEffect, useState } from "react";
+import { QuizComponentObject } from "../template/QuizTemplate";
 
-// const code = `const [count, setCount] = useState(0);
+const code = `const [count, setCount] = useState(0);
 
-// useEffect(() => {
-//   if (count < 3) {
-//     setCount((prev) => prev + 1);
-//     console.log("hello");
-//   }
+useEffect(() => {
+  if (count < 3) {
+    setCount((prev) => prev + 1);
+    console.log("hello");
+  }
 
-//   return () => console.log("bye");
-// }, [count]);`;
+  return () => console.log("bye");
+}, [count]);`;
 
-// const Quiz8 = () => {
-//   const { show, result, isLogShow } = useLog();
-//   const [count, setCount] = useState(0);
+const Quiz8: QuizComponentObject = () => {
+  const [count, setCount] = useState(0);
 
-//   useEffect(() => {
-//     if (count < 3) {
-//       setCount((prev) => prev + 1);
-//       console.log("hello");
-//     }
+  useEffect(() => {
+    if (count < 3) {
+      setCount((prev) => prev + 1);
+      console.log("hello");
+    }
 
-//     return () => console.log("bye");
-//   }, [count]);
+    return () => console.log("bye");
+  }, [count]);
 
-//   return (
-//     <QuizTemplate
-//       {...{
-//         code,
-//         isLogShow,
-//         result,
-//         show,
-//       }}
-//     />
-//   );
-// };
+  return null;
+};
 
-// export default Quiz8;
+Quiz8.code = code;
+
+export default Quiz8;

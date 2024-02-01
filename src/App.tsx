@@ -2,7 +2,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GitHubIcon from "./assets/images/github.svg";
 import Description from "./components/description/Description";
 import Quiz5 from "./components/quizzes/Quiz5";
-import QuizTemplate from "./components/template/QuizTemplateNew";
+import QuizTemplate from "./components/template/QuizTemplate";
+import Quiz1 from "./components/quizzes/Quiz1";
+import Quiz3 from "./components/quizzes/Quiz3";
+import Quiz6 from "./components/quizzes/Quiz6";
+import Quiz8 from "./components/quizzes/Quiz8";
+import Quiz9 from "./components/quizzes/Quiz9";
+import Quiz7 from "./components/quizzes/Quiz7";
+import Quiz2 from "./components/quizzes/Quiz2";
+import Quiz4 from "./components/quizzes/Quiz4";
 
 const routes = [
   {
@@ -10,51 +18,51 @@ const routes = [
     element: <Description />,
     view: "Home",
   },
-  // {
-  //   path: "/1",
-  //   element: <Quiz1 />,
-  //   view: "1",
-  // },
-  // {
-  //   path: "/2",
-  //   element: <Quiz2 />,
-  //   view: "2",
-  // },
-  // {
-  //   path: "/3",
-  //   element: <Quiz3 />,
-  //   view: "3",
-  // },
-  // {
-  //   path: "/4",
-  //   element: <Quiz4 />,
-  //   view: "4",
-  // },
+  {
+    path: "/1",
+    element: <QuizTemplate quizComponentObject={Quiz1} />,
+    view: "1",
+  },
+  {
+    path: "/2",
+    element: <QuizTemplate quizComponentObject={Quiz2} />,
+    view: "2",
+  },
+  {
+    path: "/3",
+    element: <QuizTemplate quizComponentObject={Quiz3} />,
+    view: "3",
+  },
+  {
+    path: "/4",
+    element: <QuizTemplate quizComponentObject={Quiz4} />,
+    view: "4",
+  },
   {
     path: "/5",
     element: <QuizTemplate quizComponentObject={Quiz5} />,
     view: "5",
   },
-  // {
-  //   path: "/6",
-  //   element: <Quiz6 />,
-  //   view: "6",
-  // },
-  // {
-  //   path: "/7",
-  //   element: <Quiz7 />,
-  //   view: "7",
-  // },
-  // {
-  //   path: "/8",
-  //   element: <Quiz8 />,
-  //   view: "8",
-  // },
-  // {
-  //   path: "/9",
-  //   element: <Quiz9 />,
-  //   view: "9",
-  // },
+  {
+    path: "/6",
+    element: <QuizTemplate quizComponentObject={Quiz6} />,
+    view: "6",
+  },
+  {
+    path: "/7",
+    element: <QuizTemplate quizComponentObject={Quiz7} />,
+    view: "7",
+  },
+  {
+    path: "/8",
+    element: <QuizTemplate quizComponentObject={Quiz8} />,
+    view: "8",
+  },
+  {
+    path: "/9",
+    element: <QuizTemplate quizComponentObject={Quiz9} />,
+    view: "9",
+  },
 ];
 
 const LinksGeneratedFromRoute = () => {

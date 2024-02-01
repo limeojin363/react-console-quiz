@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { QuizObject } from "../template/QuizTemplateNew";
+import { QuizComponentObject } from "../template/QuizTemplate";
 
-const code = `// clean-up은 실행이 될까?
+const code = `const [a, setA] = useState(1);
+
+// clean-up은 실행이 될까?
 useEffect(() => {
   if (a > 20)
     return () => {
@@ -12,7 +14,7 @@ useEffect(() => {
   setA((prev) => prev * 2);
 }, [a, setA]);`;
 
-const Quiz5: QuizObject = () => {
+const Quiz5: QuizComponentObject = () => {
   const [a, setA] = useState(1);
 
   // clean-up은 실행이 될까?
