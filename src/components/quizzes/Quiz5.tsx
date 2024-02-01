@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import useLog from "../../hooks/useLog";
-import QuizTemplate from "../template/QuizTemplate";
+import { QuizObject } from "../template/QuizTemplateNew";
 
 const code = `// clean-up은 실행이 될까?
 useEffect(() => {
@@ -13,8 +12,7 @@ useEffect(() => {
   setA((prev) => prev * 2);
 }, [a, setA]);`;
 
-const Quiz5 = () => {
-  const { show, result, isLogShow } = useLog();
+const Quiz5: QuizObject = () => {
   const [a, setA] = useState(1);
 
   // clean-up은 실행이 될까?
@@ -28,16 +26,9 @@ const Quiz5 = () => {
     setA((prev) => prev * 2);
   }, [a, setA]);
 
-  return (
-    <QuizTemplate
-      {...{
-        code,
-        isLogShow,
-        result,
-        show,
-      }}
-    />
-  );
+  return null;
 };
+
+Quiz5.code = code;
 
 export default Quiz5;

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-type TItemsWrapper = { height: number };
+type TItemsWrapper = { height: number; borderColor?: string };
+type TItemInner = { borderColor?: string };
 
 const S = {
   AnswerRoot: styled.div`
     display: flex;
     flex-direction: column;
   `,
-  AnswerInputItemsWrapper: styled.div<TItemsWrapper>`
+  ItemsWrapper: styled.div<TItemsWrapper>`
     display: flex;
     flex-direction: column;
     > * {
@@ -15,10 +16,12 @@ const S = {
     }
     height: ${({ height }) => `${height}px`};
     margin-bottom: 16px;
+    border: 2px solid ${({ borderColor }) => borderColor ?? "black"};
   `,
-  DraggableInner: styled.div`
+  ItemInner: styled.div<TItemInner>`
     display: flex;
     gap: 8px;
+    border: 2px solid ${({ borderColor }) => borderColor ?? "black"};
   `,
 };
 

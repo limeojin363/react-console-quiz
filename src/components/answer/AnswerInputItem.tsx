@@ -14,31 +14,31 @@ type AnswerInputItemProps = {
 const AnswerInputItem = ({
   id,
   value,
+  index,
   changeValue,
   deleteItem,
-  index,
 }: AnswerInputItemProps) => {
   const onDelete = () => {
     deleteItem(id);
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeValue(id, e.target.value);
   };
 
   return (
     <Draggable index={index} draggableId={id}>
       {(provided) => (
-        <S.DraggableInner
+        <S.ItemInner
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
           <div tabIndex={-1}>끌기</div>
-          <Input id={id} value={value} onChange={onChange} />
+          <Input id={id} value={value} onChange={onChangeInput} />
           <Button tabIndex={-1} onClick={onDelete}>
             삭제
           </Button>
-        </S.DraggableInner>
+        </S.ItemInner>
       )}
     </Draggable>
   );
