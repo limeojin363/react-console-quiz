@@ -11,7 +11,7 @@ export type QuizComponentObject = {
   code: string;
 };
 
-const BottomLeft = ({
+const BottomLeftInner = ({
   quizStatus,
   answerInputObject,
   checkedAnswerItems,
@@ -29,19 +29,23 @@ const BottomLeft = ({
     />
   );
 
-const BottomRight = ({
+const BottomRightInner = ({
   quizStatus,
   executionResult,
   executeCode,
 }: Pick<
   ReturnType<typeof useQuizState>,
   "quizStatus" | "executionResult" | "executeCode"
->) =>
-  quizStatus === "INPUTTING" ? (
-    <Button onClick={executeCode}>123123</Button>
-  ) : (
-    <CodeExecutionResult result={executionResult} />
-  );
+>) => (
+  <>
+    <Button disabled={quizStatus !== "INPUTTING"} onClick={executeCode}>
+      정답 확인하기
+    </Button>
+    {quizStatus !== "INPUTTING" && (
+      <CodeExecutionResult result={executionResult} />
+    )}
+  </>
+);
 
 type QuizTemplateProps = { quizComponentObject: QuizComponentObject };
 
@@ -58,20 +62,26 @@ const QuizTemplate = ({ quizComponentObject }: QuizTemplateProps) => {
   return (
     <>
       <S.Root>
-        <S.Top>
+        <S.TopArea>
           <CodeView code={quizComponentObject.code} />
-        </S.Top>
-        <S.Bottom>
-          <BottomLeft
-            {...{
-              answerInputObject,
-              quizStatus,
-              checkedAnswerItems,
-              isOverallTrue,
-            }}
-          />
-          <BottomRight {...{ executeCode, executionResult, quizStatus }} />
-        </S.Bottom>
+        </S.TopArea>
+        <S.BottomArea>
+          <S.BottomLeftArea>
+            <BottomLeftInner
+              {...{
+                answerInputObject,
+                quizStatus,
+                checkedAnswerItems,
+                isOverallTrue,
+              }}
+            />
+          </S.BottomLeftArea>
+          <S.BottomRightArea>
+            <BottomRightInner
+              {...{ executeCode, executionResult, quizStatus }}
+            />
+          </S.BottomRightArea>
+        </S.BottomArea>
       </S.Root>
       {/* Quiz component mount */}
       {quizComponentObject()}

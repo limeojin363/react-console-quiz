@@ -1,25 +1,32 @@
+// TODO: AnswerCheck와 합치는 방향으로 refactoring
+
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { Button } from "../ui/button";
 import AnswerInputItem from "./AnswerInputItem";
 import S from "./Answer.style";
 import useAnswerInput from "../../hooks/quiz/sub/useAnswerInput";
 
-type AnswerInput = ReturnType<typeof useAnswerInput>;
+type AnswerInputProps = ReturnType<typeof useAnswerInput>;
 
-const Answer = ({
+const AnswerInput = ({
   changeValue,
   createItem,
   deleteItem,
   onDragItemEnd,
   answerInputState,
-}: AnswerInput) => {
+}: AnswerInputProps) => {
+  const { length } = answerInputState;
+  // react-beautiful-dnd에서 gap 사용이 불가능으로 인해(꼼수, 가능하다면 수정하기)..
+  const listHeight = length * 56 + (length - 1) * 8;
+
   return (
     <S.AnswerRoot>
+      <Button onClick={createItem}>+</Button>
       <DragDropContext onDragEnd={onDragItemEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
             <S.ItemsWrapper
-              height={answerInputState.length * 52}
+              height={listHeight}
               ref={provided.innerRef}
               {...provided.droppableProps}>
               {answerInputState.map((item, index) => (
@@ -31,13 +38,13 @@ const Answer = ({
                   index={index}
                 />
               ))}
+              {provided.placeholder}
             </S.ItemsWrapper>
           )}
         </Droppable>
       </DragDropContext>
-      <Button onClick={createItem} />
     </S.AnswerRoot>
   );
 };
 
-export default Answer;
+export default AnswerInput;

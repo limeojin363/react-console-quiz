@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 type TItemsWrapper = { height: number; borderColor?: string };
-type TItemInner = { borderColor?: string };
 
 const S = {
-  AnswerRoot: styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  ERoot: styled.div`
+    margin-top: 20px;
   `,
-  ItemsWrapper: styled.div<TItemsWrapper>`
+  ExecutionItemsWrapper: styled.div<TItemsWrapper>`
     display: flex;
     flex-direction: column;
 
@@ -23,15 +20,12 @@ const S = {
     margin-bottom: 16px;
     border: 1px solid ${({ borderColor }) => borderColor ?? "black"};
   `,
-  DragIconWrapper: styled.div`
+  ExecutionItemContainer: styled.div`
     display: flex;
     flex-direction: column;
+    align-content: center;
     justify-content: center;
-    align-items: center;
-  `,
-  ItemInner: styled.div<TItemInner>`
-    display: flex;
-    border: 1px solid ${({ borderColor }) => borderColor ?? "black"};
+    border: 1px solid black;
   `,
 };
 

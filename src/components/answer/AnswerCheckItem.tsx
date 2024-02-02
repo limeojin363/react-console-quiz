@@ -1,3 +1,4 @@
+import { MdOutlineDragIndicator } from "react-icons/md";
 import { AnswerCheckedItem } from "../../hooks/quiz/sub/useAnswerCheck";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -15,7 +16,9 @@ const AnswerCheckItem = ({
 
   return (
     <S.ItemInner borderColor={borderColor}>
-      <div tabIndex={-1}>끌기</div>
+      <S.DragIconWrapper>
+        <MdOutlineDragIndicator size={20} />
+      </S.DragIconWrapper>
       <Input disabled value={answerCheckItem.value} />
       <Button disabled tabIndex={-1}>
         삭제

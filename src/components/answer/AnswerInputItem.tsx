@@ -1,6 +1,7 @@
 import { Draggable } from "react-beautiful-dnd";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { MdOutlineDragIndicator } from "react-icons/md";
 import S from "./Answer.style";
 
 type AnswerInputItemProps = {
@@ -33,7 +34,9 @@ const AnswerInputItem = ({
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}>
-          <div tabIndex={-1}>끌기</div>
+          <S.DragIconWrapper>
+            <MdOutlineDragIndicator size={20} />
+          </S.DragIconWrapper>
           <Input id={id} value={value} onChange={onChangeInput} />
           <Button tabIndex={-1} onClick={onDelete}>
             삭제
