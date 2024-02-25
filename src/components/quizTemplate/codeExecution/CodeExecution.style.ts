@@ -3,8 +3,11 @@ import styled from "styled-components";
 type TItemsWrapper = { height: number; borderColor?: string };
 
 const S = {
-  ERoot: styled.div`
-    margin-top: 20px;
+  Root: styled.div`
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
   `,
   ExecutionItemsWrapper: styled.div<TItemsWrapper>`
     display: flex;

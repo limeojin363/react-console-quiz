@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { QuizStatus } from "../useQuizState";
+import { QuizOverallStatus } from "../../../components/quizTemplate/userAnswer/UserAnswer.type";
 
 type ExecutionResultItem = {
   value: string;
@@ -7,23 +7,20 @@ type ExecutionResultItem = {
 export type ExecutionResult = ExecutionResultItem[];
 
 // console.log overriding 수행과, 퀴즈 코드의 실행 결과 반환
-const useQuizCodeExecution = ({ quizStatus }: { quizStatus: QuizStatus }) => {
+const useQuizCodeExecution = (quizOverallStatus: QuizOverallStatus) => {
   const [queue, setQueue] = useState<string[]>([]);
   const [executionResult, setExecutionResult] = useState<ExecutionResult>([]);
 
-  const pushToQueue = useCallback(
-    (item: string | number) => {
-      setQueue((prev) => [...prev, item.toString()]);
-    },
-    [setQueue]
-  );
-
   // JS overriding
   useEffect(() => {
-    console.log = (a) => pushToQueue(a);
-  }, [pushToQueue]);
+    const pushToQueue = (item: string | number) => {
+      setQueue((prev) => [...prev, item.toString()]);
+    };
 
-  const move = useCallback(() => {
+    console.log = (item) => pushToQueue(item);
+  }, []);
+
+  const moveFromQueueToResult = useCallback(() => {
     if (queue.length !== 0) {
       setExecutionResult((prev) => [...prev, { value: queue[0] }]);
       setQueue((prev) => prev.slice(1));
@@ -31,16 +28,13 @@ const useQuizCodeExecution = ({ quizStatus }: { quizStatus: QuizStatus }) => {
   }, [queue]);
 
   useEffect(() => {
-    if (quizStatus === "CHECKING") {
-      const moveTimer = setInterval(move, 1000);
+    if (quizOverallStatus === "COMPARING") {
+      const moveTimer = setInterval(moveFromQueueToResult, 1000);
       return () => clearTimeout(moveTimer);
     }
-  }, [move, quizStatus]);
+  }, [moveFromQueueToResult, quizOverallStatus]);
 
-  return {
-    executionResult,
-    isQueueEmpty: queue.length === 0,
-  };
+  return executionResult;
 };
 
 export default useQuizCodeExecution;

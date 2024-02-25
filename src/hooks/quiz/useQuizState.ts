@@ -1,38 +1,38 @@
 import { useState } from "react";
-import useAnswerInput from "./sub/useAnswerInput";
 import useQuizCodeExecution from "./sub/useQuizCodeExecution";
-import useAnswerCheck from "./sub/useAnswerCheck";
+import useUserAnswer from "./sub/useUserAnswer";
+import { QuizOverallStatus } from "../../components/quizTemplate/userAnswer/UserAnswer.type";
 
-export type QuizStatus = "INPUTTING" | "CHECKING" | "FINISHED";
-
-/** Highest level hook that handles quiz state(한국말로 짬통) */
+/** Highest level hook that handles quiz state */
 const useQuizState = () => {
-  const [quizStatus, setQuizStatus] = useState<QuizStatus>("INPUTTING");
-  const { executionResult, isQueueEmpty } = useQuizCodeExecution({
-    quizStatus,
-  });
-  const answerInputObject = useAnswerInput();
-  const { checkedAnswerItems, isOverallTrue } = useAnswerCheck({
-    quizStatus,
-    answerInput: answerInputObject.answerInputState,
-    executionResult,
-  });
+  const [quizOverallStatus, setQuizOverallStatus] =
+    useState<QuizOverallStatus>("INPUTTING");
+  const executionResult = useQuizCodeExecution(quizOverallStatus);
+  const { answerItems, answerItemHandlers } = useUserAnswer(executionResult);
 
-  const executeCode = () => {
-    setQuizStatus("CHECKING");
-  };
+  const executeCode = () => setQuizOverallStatus("COMPARING");
 
-  if (quizStatus === "CHECKING" && isQueueEmpty) {
-    setQuizStatus("FINISHED");
+  const resultDecisionNeeded =
+    answerItems.every((item) => item.itemCompareStatus !== "AWAITING") &&
+    quizOverallStatus === "COMPARING";
+
+  if (resultDecisionNeeded) {
+    const isLengthCorrect = answerItems.length === executionResult.length;
+    const areEachItemsCorrect = answerItems.every(
+      (item) => item.itemCompareStatus === "CORRECT"
+    );
+
+    setQuizOverallStatus(
+      isLengthCorrect && areEachItemsCorrect ? "CORRECT" : "INCORRECT"
+    );
   }
 
   return {
     executeCode,
-    quizStatus,
+    quizOverallStatus,
     executionResult,
-    answerInputObject,
-    checkedAnswerItems,
-    isOverallTrue,
+    answerItems,
+    answerItemHandlers,
   };
 };
 

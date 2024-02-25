@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-type TItemsWrapper = { height: number; borderColor?: string };
-type TItemInner = { borderColor?: string };
+type SItemsWrapperProps = { borderColor: string };
+type SItemContainerProps = { borderColor: string };
 
 const S = {
   AnswerRoot: styled.div`
@@ -9,7 +9,7 @@ const S = {
     flex-direction: column;
     gap: 20px;
   `,
-  ItemsWrapper: styled.div<TItemsWrapper>`
+  ItemsWrapper: styled.div<SItemsWrapperProps>`
     display: flex;
     flex-direction: column;
 
@@ -19,9 +19,8 @@ const S = {
       height: 56px;
     }
 
-    height: ${({ height }) => height}px;
     margin-bottom: 16px;
-    border: 1px solid ${({ borderColor }) => borderColor ?? "black"};
+    border: 1px solid ${({ borderColor }) => borderColor};
   `,
   DragIconWrapper: styled.div`
     display: flex;
@@ -29,9 +28,9 @@ const S = {
     justify-content: center;
     align-items: center;
   `,
-  ItemInner: styled.div<TItemInner>`
+  ItemContainer: styled.div<SItemContainerProps>`
     display: flex;
-    border: 1px solid ${({ borderColor }) => borderColor ?? "black"};
+    border: 1px solid ${({ borderColor }) => borderColor};
   `,
 };
 

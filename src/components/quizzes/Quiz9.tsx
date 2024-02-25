@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { QuizComponentObject } from "../template/QuizTemplate";
+import { QuizComponentObject } from "../quizTemplate/QuizTemplate";
 
 const code = `const [count, setCount] = useState(0);
 

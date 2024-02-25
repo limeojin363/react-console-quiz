@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import GitHubIcon from "./assets/images/github.svg";
 import Description from "./components/description/Description";
 import Quiz5 from "./components/quizzes/Quiz5";
-import QuizTemplate from "./components/template/QuizTemplate";
+import QuizTemplate from "./components/quizTemplate/QuizTemplate";
 import Quiz1 from "./components/quizzes/Quiz1";
 import Quiz3 from "./components/quizzes/Quiz3";
 import Quiz6 from "./components/quizzes/Quiz6";
@@ -66,7 +66,6 @@ const routes = [
 ];
 
 const LinksGeneratedFromRoute = () => {
-  console.log(window.location.pathname);
   return (
     <div className="flex gap-2">
       {routes.map((route) => (
