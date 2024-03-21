@@ -17,21 +17,20 @@ const CodeExecution = ({
   const isManipulationEnabled = quizOverallStatus === "INPUTTING";
 
   const answerCheckButtonProps: ButtonProps = {
-    onClick: isManipulationEnabled ? executeCode : () => {},
+    type: "submit",
     disabled: !isManipulationEnabled,
+    onClick: isManipulationEnabled ? executeCode : () => {},
   };
 
   return (
-    <S.Root>
+    <S.CodeExecutionRoot>
       <Button {...answerCheckButtonProps}>정답 확인</Button>
-      <S.ExecutionItemsWrapper height={40}>
+      <S.ListContainer>
         {result.map((item, i) => (
-          <S.ExecutionItemContainer key={i}>
-            {item.value}
-          </S.ExecutionItemContainer>
+          <S.ItemContainer key={i}>{item.value}</S.ItemContainer>
         ))}
-      </S.ExecutionItemsWrapper>
-    </S.Root>
+      </S.ListContainer>
+    </S.CodeExecutionRoot>
   );
 };
 

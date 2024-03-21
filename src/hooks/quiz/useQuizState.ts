@@ -7,24 +7,24 @@ import { QuizOverallStatus } from "../../components/quizTemplate/userAnswer/User
 const useQuizState = () => {
   const [quizOverallStatus, setQuizOverallStatus] =
     useState<QuizOverallStatus>("INPUTTING");
-  const executionResult = useQuizCodeExecution(quizOverallStatus);
+  const { executionResult, isQueueEmpty } =
+    useQuizCodeExecution(quizOverallStatus);
   const { answerItems, answerItemHandlers } = useUserAnswer(executionResult);
 
   const executeCode = () => setQuizOverallStatus("COMPARING");
 
-  const resultDecisionNeeded =
-    answerItems.every((item) => item.itemCompareStatus !== "AWAITING") &&
-    quizOverallStatus === "COMPARING";
+  if (isQueueEmpty && quizOverallStatus === "COMPARING") {
+    // 딜레이 주는 이유가 있습니다..
+    setTimeout(() => {
+      const sameLength = answerItems.length === executionResult.length;
+      const areEachItemsMatched = answerItems.every(
+        (item) => item.itemCompareStatus === "CORRECT"
+      );
 
-  if (resultDecisionNeeded) {
-    const isLengthCorrect = answerItems.length === executionResult.length;
-    const areEachItemsCorrect = answerItems.every(
-      (item) => item.itemCompareStatus === "CORRECT"
-    );
-
-    setQuizOverallStatus(
-      isLengthCorrect && areEachItemsCorrect ? "CORRECT" : "INCORRECT"
-    );
+      setQuizOverallStatus(
+        sameLength && areEachItemsMatched ? "CORRECT" : "INCORRECT"
+      );
+    });
   }
 
   return {

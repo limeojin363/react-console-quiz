@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const S = {
-  Root: styled.div`
+  QuizTemplateRoot: styled.form`
     display: flex;
     flex-direction: column;
     gap: 16px;

@@ -34,7 +34,7 @@ const useQuizCodeExecution = (quizOverallStatus: QuizOverallStatus) => {
     }
   }, [moveFromQueueToResult, quizOverallStatus]);
 
-  return executionResult;
+  return { executionResult, isQueueEmpty: queue.length === 0 };
 };
 
 export default useQuizCodeExecution;

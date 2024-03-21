@@ -1,4 +1,4 @@
-import S from "./Answer.style";
+import S from "./UserAnswer.style";
 import { Button, ButtonProps } from "../../ui/button";
 import {
   TUserAnswerItem,
@@ -18,9 +18,9 @@ const UserAnswer = ({
   itemHandlers,
   quizOverallStatus,
 }: UserAnswerProps) => {
-  const itmesWrapperBorderColor = {
-    INPUTTING: "black",
-    COMPARING: "black",
+  const itemsWrapperBorderColor = {
+    INPUTTING: "transparent",
+    COMPARING: "transparent",
     INCORRECT: "red",
     CORRECT: "blue",
   }[quizOverallStatus];
@@ -28,14 +28,15 @@ const UserAnswer = ({
   const isManipulationEnabled = quizOverallStatus === "INPUTTING";
 
   const addButtonProps: ButtonProps = {
+    type: "button",
     onClick: isManipulationEnabled ? itemHandlers.createItem : () => {},
     disabled: !isManipulationEnabled,
   };
 
   return (
-    <S.AnswerRoot>
+    <S.UserAnswerRoot>
       <Button {...addButtonProps}>+</Button>
-      <S.ItemsWrapper borderColor={itmesWrapperBorderColor}>
+      <S.ListContainer borderColor={itemsWrapperBorderColor}>
         {items.map((item, i) => (
           <UserAnswerItem
             key={i}
@@ -44,8 +45,8 @@ const UserAnswer = ({
             isManipulationEnabled={isManipulationEnabled}
           />
         ))}
-      </S.ItemsWrapper>
-    </S.AnswerRoot>
+      </S.ListContainer>
+    </S.UserAnswerRoot>
   );
 };
 

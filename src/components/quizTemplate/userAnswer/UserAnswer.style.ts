@@ -4,32 +4,29 @@ type SItemsWrapperProps = { borderColor: string };
 type SItemContainerProps = { borderColor: string };
 
 const S = {
-  AnswerRoot: styled.div`
+  UserAnswerRoot: styled.div`
     display: flex;
     flex-direction: column;
+
     gap: 20px;
   `,
-  ItemsWrapper: styled.div<SItemsWrapperProps>`
+  ListContainer: styled.div<SItemsWrapperProps>`
     display: flex;
     flex-direction: column;
+    gap: 16px;
 
-    > * {
-      margin-bottom: 8px;
-      padding: 8px 4px;
-      height: 56px;
-    }
-
-    margin-bottom: 16px;
+    padding: 12px 4px;
     border: 1px solid ${({ borderColor }) => borderColor};
-  `,
-  DragIconWrapper: styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   `,
   ItemContainer: styled.div<SItemContainerProps>`
     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    height: 50px;
+    padding: 4px;
+
     border: 1px solid ${({ borderColor }) => borderColor};
   `,
 };

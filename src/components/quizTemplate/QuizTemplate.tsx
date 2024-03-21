@@ -34,9 +34,14 @@ const QuizTemplate = ({ quizComponentObject }: QuizTemplateProps) => {
     quizOverallStatus,
   };
 
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    executeCode();
+  };
+
   return (
     <>
-      <S.Root>
+      <S.QuizTemplateRoot onSubmit={onSubmit}>
         <S.TopArea>
           <CodeView code={quizComponentObject.code} />
         </S.TopArea>
@@ -48,7 +53,7 @@ const QuizTemplate = ({ quizComponentObject }: QuizTemplateProps) => {
             <CodeExecutionResult {...codeExecutionProps} />
           </S.BottomRightArea>
         </S.BottomArea>
-      </S.Root>
+      </S.QuizTemplateRoot>
       {/* Quiz component mount */}
       {quizComponentObject()}
     </>

@@ -1,6 +1,6 @@
 import { Button, ButtonProps } from "../../ui/button";
 import { Input, InputProps } from "../../ui/input";
-import S from "./Answer.style";
+import S from "./UserAnswer.style";
 import { AnswerItemHandlers, TUserAnswerItem } from "./UserAnswer.type";
 
 type UserAnswerItemProps = TUserAnswerItem & {
@@ -25,13 +25,14 @@ const UserAnswerItem = ({
   };
 
   const deleteButtonProps: ButtonProps = {
+    type: "button",
     tabIndex: -1,
     disabled: !isManipulationEnabled,
     onClick: isManipulationEnabled ? () => deleteItem(id) : undefined,
   };
 
   const itemBorderColor = {
-    AWAITING: "black",
+    AWAITING: "transparent",
     CORRECT: "blue",
     INCORRECT: "red",
   }[itemCompareStatus];

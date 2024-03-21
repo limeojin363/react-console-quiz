@@ -1,7 +1,7 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const CodeViewer = ({ code }: { code: string }) => {
+const CodeView = ({ code }: { code: string }) => {
   return (
     <div className="flex-1">
       <SyntaxHighlighter
@@ -14,4 +14,4 @@ const CodeViewer = ({ code }: { code: string }) => {
   );
 };
 
-export default CodeViewer;
+export default CodeView;

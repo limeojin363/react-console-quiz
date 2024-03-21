@@ -1,34 +1,27 @@
 import styled from "styled-components";
 
-type TItemsWrapper = { height: number; borderColor?: string };
-
 const S = {
-  Root: styled.div`
+  CodeExecutionRoot: styled.div`
     display: flex;
     flex-direction: column;
 
     gap: 20px;
   `,
-  ExecutionItemsWrapper: styled.div<TItemsWrapper>`
+  ListContainer: styled.div`
     display: flex;
     flex-direction: column;
+    gap: 16px;
 
-    > * {
-      margin-bottom: 8px;
-      padding: 8px 4px;
-      height: 56px;
-    }
+    padding: 12px 4px;
 
-    height: ${({ height }) => height}px;
-    margin-bottom: 16px;
-    border: 1px solid ${({ borderColor }) => borderColor ?? "black"};
+    border: 1px solid transparent;
   `,
-  ExecutionItemContainer: styled.div`
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
+  ItemContainer: styled.div`
+    height: 50px;
     border: 1px solid black;
+
+    display: flex;
+    align-items: center;
   `,
 };
 
