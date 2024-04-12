@@ -101,6 +101,7 @@ const App = () => {
         <LinksGeneratedFromRoute />
         <GitHubLink />
       </header>
+
       <main>
         <RouterProvider router={createBrowserRouter(routes)} />
       </main>
