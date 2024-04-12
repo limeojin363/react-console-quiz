@@ -11,6 +11,7 @@ import Quiz9 from "./components/quizzes/Quiz9";
 import Quiz7 from "./components/quizzes/Quiz7";
 import Quiz2 from "./components/quizzes/Quiz2";
 import Quiz4 from "./components/quizzes/Quiz4";
+import Quiz10 from "./components/quizzes/Quiz10";
 
 const routes = [
   {
@@ -62,6 +63,11 @@ const routes = [
     path: "/9",
     element: <QuizTemplate quizComponentObject={Quiz9} />,
     view: "9",
+  },
+  {
+    path: "/10",
+    element: <QuizTemplate quizComponentObject={Quiz10} />,
+    view: "10",
   },
 ];
 
